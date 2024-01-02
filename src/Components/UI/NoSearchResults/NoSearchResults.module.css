@@ -1,0 +1,16 @@
+.noSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80px auto;
+  color: #4d44b5;
+  font-size: 22px;
+  font-weight: 600;
+  width: 400px;
+  border-radius: 40px;
+  white-space: nowrap;
+}
+
+.value {
+  color: #c1bbeb;
+}

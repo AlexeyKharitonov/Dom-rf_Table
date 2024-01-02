@@ -1,0 +1,72 @@
+.table {
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.table td {
+  color: #303972;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 32px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.table td:first-child {
+  padding: 16px;
+}
+
+.table th {
+  border-bottom: 1px solid #cccccc;
+  color: #303972;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 32px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tfoot tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr .code {
+  color: #4d44b5;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.table tr .company {
+  color: #303972;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.table tr .time {
+  color: #a098ae;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.table tfoot tr td.tableFooter {
+  text-align: left;
+  padding: 45px 0 49px 32px;
+  background-color: #fff;
+  border-radius: 0 0 20px 20px;
+  color: #a098ae;
+  font-size: 14px;
+  font-weight: 400;
+  border-bottom: none;
+}
+
+.checkedClass {
+  border-left: 5px solid #4d44b5;
+}
+
+.tableNumber {
+  color: #303972 !important;
+}

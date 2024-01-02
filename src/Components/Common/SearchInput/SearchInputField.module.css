@@ -1,0 +1,30 @@
+.inputWithIcon {
+  margin-bottom: 50px;
+  position: relative;
+  margin-left: 68px;
+}
+
+.inputWithIcon input {
+  width: 350px;
+  height: 60px;
+  border-radius: 40px;
+  color: #a098ae;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 80px;
+  outline: none;
+  border: none;
+}
+
+.inputWithIcon input::placeholder {
+  color: #a098ae;
+}
+
+.inputWithIcon img {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+}
