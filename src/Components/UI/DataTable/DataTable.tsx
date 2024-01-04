@@ -1,10 +1,10 @@
 import { ICompanyStockInfo } from "./DataTable.type";
-import CheckBoxFiled from "../../Common/CheckBoxField/CheckBoxFiled";
-import NoSearchResults from "../NoSearchResults/NoSearchResults";
-import useCheckBoxContext from "../../../Context/UseCheckBox";
+import { CheckBoxFieled } from "../../Common/CheckBoxField";
+import { NoSearchResults } from "../NoSearchResults";
+import { useCheckBoxContext } from "../../../Context/";
 import styles from "./DataTable.module.css";
 
-const DataTable = () => {
+export const DataTable = () => {
   const { filteredData, selected } = useCheckBoxContext();
 
   if (!filteredData.length) return <NoSearchResults />;
@@ -12,43 +12,43 @@ const DataTable = () => {
     <table className={styles.table}>
       <thead>
         <tr>
-          <td></td>
-          <th>Код</th>
-          <th>Кратк. наим.</th>
-          <th>Последняя</th>
-          <th>Изм., %</th>
-          <th>Первая</th>
-          <th>Мин.</th>
-          <th>Макс.</th>
-          <th>Ср.взвеш.</th>
-          <th>Объем</th>
-          <th>Время</th>
+          <th scope="col"></th>
+          <th scope="col">Код</th>
+          <th scope="col">Кратк. наим.</th>
+          <th scope="col">Последняя</th>
+          <th scope="col">Изм., %</th>
+          <th scope="col">Первая</th>
+          <th scope="col">Мин.</th>
+          <th scope="col">Макс.</th>
+          <th scope="col">Ср.взвеш.</th>
+          <th scope="col">Объем</th>
+          <th scope="col">Время</th>
         </tr>
       </thead>
       <tbody>
         {filteredData.map((company: ICompanyStockInfo) => (
-          <>
-            <tr
-              key={company.code}
-              className={
-                selected.includes(company.code) ? styles.checkedClass : ""
-              }
-            >
-              <td>
-                <CheckBoxFiled id={company.code} />
-              </td>
-              <td className={styles.code}>{company.code}</td>
-              <td className={styles.company}>{company.company}</td>
-              <td>{company.lastPrice}</td>
-              <td>{company.changePercent}</td>
-              <td>{company.openPrice}</td>
-              <td>{company.minPrice}</td>
-              <td>{company.maxPrice}</td>
-              <td>{company.avgPrice}</td>
-              <td>{company.volume}</td>
-              <td className={styles.time}>{company.time}</td>
-            </tr>
-          </>
+          <tr
+            key={company.code}
+            className={
+              selected.includes(company.code)
+                ? styles.checkedClass
+                : styles.invisibleBorder
+            }
+          >
+            <td>
+              <CheckBoxFieled id={company.code} />
+            </td>
+            <td className={styles.code}>{company.code}</td>
+            <td className={styles.company}>{company.company}</td>
+            <td>{company.lastPrice}</td>
+            <td>{company.changePercent}</td>
+            <td>{company.openPrice}</td>
+            <td>{company.minPrice}</td>
+            <td>{company.maxPrice}</td>
+            <td>{company.avgPrice}</td>
+            <td>{company.volume}</td>
+            <td className={styles.time}>{company.time}</td>
+          </tr>
         ))}
       </tbody>
       <tfoot>
@@ -62,5 +62,3 @@ const DataTable = () => {
     </table>
   );
 };
-
-export default DataTable;

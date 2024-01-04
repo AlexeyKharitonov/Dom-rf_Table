@@ -1,24 +1,26 @@
-import { FC, createContext, useContext, useState } from "react";
+import { FC, createContext, useContext, useMemo, useState } from "react";
 import dataTable from "../Data/DataTable.json";
-
-import { ICheckBoxContext, IProps } from "./UseCheckBox.type";
+import { ICheckBoxContext } from "./UseCheckBox.type";
 
 const CheckBoxContext = createContext<ICheckBoxContext>({
   selected: [],
-  toogleRow: () => {},
+  toggleRow: () => {},
   data: [],
   value: null,
   setValue: () => {},
+  filteredData: [],
 });
 
 export const useCheckBoxContext = () => useContext(CheckBoxContext);
 
-export const CheckBoxProvider: FC<IProps> = ({ children }) => {
+export const CheckBoxProvider: FC<React.PropsWithChildren<{}>> = ({
+  children,
+}) => {
   const [data] = useState(dataTable);
   const [selected, setSelected] = useState<string[]>([]);
   const [value, setValue] = useState("");
 
-  const toogleRow = (code: string) => {
+  const toggleRow = (code: string) => {
     setSelected((currentSelected) =>
       currentSelected.includes(code)
         ? currentSelected.filter((item) => item !== code)
@@ -26,17 +28,19 @@ export const CheckBoxProvider: FC<IProps> = ({ children }) => {
     );
   };
 
-  const filteredData = data.filter((item) =>
-    item.company.toLowerCase().includes(value.toLowerCase())
+  const filteredData = useMemo(
+    () =>
+      data.filter((item) =>
+        item.company.toLowerCase().includes(value.toLowerCase())
+      ),
+    [data, value]
   );
 
   return (
     <CheckBoxContext.Provider
-      value={{ filteredData, value, setValue, selected, toogleRow }}
+      value={{ filteredData, value, setValue, selected, toggleRow }}
     >
       {children}
     </CheckBoxContext.Provider>
   );
 };
-
-export default useCheckBoxContext;

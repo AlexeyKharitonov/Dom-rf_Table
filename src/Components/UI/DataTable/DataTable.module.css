@@ -67,6 +67,10 @@
   border-left: 5px solid #4d44b5;
 }
 
+.invisibleBorder {
+  border-left: 5px solid #fff;
+}
+
 .tableNumber {
   color: #303972 !important;
 }

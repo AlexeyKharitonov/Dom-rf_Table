@@ -1,7 +1,7 @@
-import useCheckBoxContext from "../../../Context/UseCheckBox";
+import { useCheckBoxContext } from "../../../Context";
 import styles from "./NoSearchResults.module.css";
 
-const NoSearchResults = () => {
+export const NoSearchResults = () => {
   const { value } = useCheckBoxContext();
 
   return (
@@ -12,5 +12,3 @@ const NoSearchResults = () => {
     </div>
   );
 };
-
-export default NoSearchResults;

@@ -1,21 +1,29 @@
-import useCheckBoxContext from "../../../Context/UseCheckBox";
-import styles from "./SearchInputField.module.css";
+import { useCheckBoxContext } from "../../../Context/";
+import { FaTimes } from "react-icons/fa";
 import searchIcon from "../../../assets/Search.svg";
+import styles from "./SearchInputField.module.css";
 
-const SearchInputField = () => {
-  const { setValue } = useCheckBoxContext();
+export const SearchInputField = () => {
+  const { value, setValue } = useCheckBoxContext();
+
+  const handleChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(value);
+  };
 
   return (
     <div className={styles.inputWithIcon}>
       <img src={searchIcon} alt="searchInput" />
       <input
-        type="text"
-        placeholder="Найти по кратк. названию..."
+        value={value || ""}
+        placeholder="Найти по кратк. наименованию..."
         maxLength={16}
-        onChange={({ target: { value } }) => setValue(value)}
+        onChange={handleChange}
       />
+      <button className={styles.clearInput} onClick={() => setValue("")}>
+        <FaTimes size={20} />
+      </button>
     </div>
   );
 };
-
-export default SearchInputField;

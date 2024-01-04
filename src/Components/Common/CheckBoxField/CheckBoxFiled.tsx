@@ -1,8 +1,14 @@
-import useCheckBoxContext from "../../../Context/UseCheckBox";
+import { useCallback } from "react";
+import { useCheckBoxContext } from "../../../Context/";
+import { CheckIcon } from "../../UI/CheckIcon";
 import styles from "./CkeckBoxField.module.css";
 
-const CheckBoxFiled = ({ id }: { id: string }) => {
-  const { selected, toogleRow } = useCheckBoxContext();
+export const CheckBoxFieled = ({ id }: { id: string }) => {
+  const { selected, toggleRow } = useCheckBoxContext();
+
+  const handleChange = useCallback(() => {
+    toggleRow(id);
+  }, [id, toggleRow]);
 
   return (
     <label className={styles.checkboxContainer}>
@@ -10,21 +16,11 @@ const CheckBoxFiled = ({ id }: { id: string }) => {
         type="checkbox"
         className={styles.checkboxInput}
         checked={selected.includes(id)}
-        onChange={() => toogleRow(id)}
+        onChange={handleChange}
       />
       <span className={styles.customCheckbox}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-          <rect width="100%" height="100%" rx="4" fill="#4D44B5" />
-          <path
-            d="M5.5 12.5L10.5 17L19 7"
-            stroke="white"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-        </svg>
+        <CheckIcon />
       </span>
     </label>
   );
 };
-
-export default CheckBoxFiled;

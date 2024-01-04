@@ -1,6 +1,6 @@
-import MarketHeader from "./Components/Common/MarketHeader/MarketHeader";
-import SearchInputField from "./Components/Common/SearchInput/SearchInputField";
-import DataTable from "./Components/UI/DataTable/DataTable";
+import { MarketHeader } from "./Components/Common/MarketHeader";
+import { SearchInputField } from "./Components/Common/SearchInput";
+import { DataTable } from "./Components/UI/DataTable";
 
 function App() {
   return (

@@ -18,6 +18,12 @@
   transform: translateY(-50%);
 }
 
+@media (max-width: 1160px) {
+  .title {
+    display: none;
+  }
+}
+
 .description {
   font-size: 36px;
   font-weight: 700;
