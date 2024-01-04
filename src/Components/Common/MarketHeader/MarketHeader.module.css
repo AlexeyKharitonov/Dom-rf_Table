@@ -34,3 +34,9 @@
   font-size: 36px;
   font-weight: 700;
 }
+
+@media (max-width: 750px) {
+  .description {
+    font-size: 26px;
+  }
+}

@@ -1,12 +1,12 @@
 export interface ICompanyStockInfo {
   code: string;
   company: string;
-  lastPrice: string;
-  changePercent: string;
-  openPrice: string;
-  minPrice: string;
-  maxPrice: string;
-  avgPrice: string;
-  volume: string;
+  lastPrice: number;
+  changePercent: number;
+  openPrice: number;
+  minPrice: number;
+  maxPrice: number;
+  avgPrice: number;
+  volume: number;
   time: string;
 }

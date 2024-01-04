@@ -2,6 +2,7 @@ import { ICompanyStockInfo } from "./DataTable.type";
 import { CheckBoxFieled } from "../../Common/CheckBoxField";
 import { NoSearchResults } from "../NoSearchResults";
 import { useCheckBoxContext } from "../../../Context/";
+import { formatChangePercent, formatVolume } from "../../../Utils/";
 import styles from "./DataTable.module.css";
 
 export const DataTable = () => {
@@ -26,28 +27,28 @@ export const DataTable = () => {
         </tr>
       </thead>
       <tbody>
-        {filteredData.map((company: ICompanyStockInfo) => (
+        {filteredData.map((item: ICompanyStockInfo) => (
           <tr
-            key={company.code}
+            key={item.code}
             className={
-              selected.includes(company.code)
+              selected.includes(item.code)
                 ? styles.checkedClass
                 : styles.invisibleBorder
             }
           >
             <td>
-              <CheckBoxFieled id={company.code} />
+              <CheckBoxFieled id={item.code} />
             </td>
-            <td className={styles.code}>{company.code}</td>
-            <td className={styles.company}>{company.company}</td>
-            <td>{company.lastPrice}</td>
-            <td>{company.changePercent}</td>
-            <td>{company.openPrice}</td>
-            <td>{company.minPrice}</td>
-            <td>{company.maxPrice}</td>
-            <td>{company.avgPrice}</td>
-            <td>{company.volume}</td>
-            <td className={styles.time}>{company.time}</td>
+            <td className={styles.code}>{item.code}</td>
+            <td className={styles.company}>{item.company}</td>
+            <td>{item.lastPrice}</td>
+            <td>{formatChangePercent(item.changePercent)}</td>
+            <td>{formatVolume(item.openPrice)}</td>
+            <td>{formatVolume(item.minPrice)}</td>
+            <td>{formatVolume(item.maxPrice)}</td>
+            <td>{formatVolume(item.avgPrice)}</td>
+            <td>{formatVolume(item.volume)}</td>
+            <td className={styles.time}>{item.time}</td>
           </tr>
         ))}
       </tbody>
